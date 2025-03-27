@@ -22,9 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+5d1cvuea0*_ipw70n6db-i0n+re2q#1l0w7@(@hucf4jk*vj%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -71,17 +68,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'amigurimistore.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "OPTIONS": {
-            "read_default_file": "amigurimistore/my.cnf",
-        },
-    }
-}
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
