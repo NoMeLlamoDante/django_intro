@@ -1,0 +1,41 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        amigurimi store
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+
+    {% if category %}
+    <h1 class="text-center mb-4">Catálogo de Productos - {{ category.name }}</h1>
+    {% else %}
+    <h1 class="text-center mb-4">Catálogo de Productos</h1>
+    {% endif %}
+    
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="Producto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="fw-bold">Precio: ${{ product.price }}</p>
+                            <p class="text-muted">SKU: {{ product.sku }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-primary" href="{% url 'detail' product_id=product.id %}">Ver Detalle</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>¿
+</div>
+{% endblock content %}

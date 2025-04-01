@@ -1,0 +1,56 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+    {% if title %}
+        {{ title }}
+    {% else %}
+        amigurimi store
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+    <div class="container my-5">
+
+        <!-- Productos -->
+        <div class="card mb-5 shadow">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="{{ product.image.url }}" alt="imagen del roducto" class="product-image" />
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ product.name }}</h2>
+                        <p class="text-muted">SKU:{{ product.sku }}</p>
+                        <p class="card-text">{{ product.description }}</p>
+                        <h4 class="text-primary">Precio: ${{ product.price }}</h4>
+                        <button class="btn btn-success">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- comentarios  -->
+        <div class="mb-4">
+            <h4>Comentarios</h4>
+            <form class="mb-3">
+                <div class="mb-2">
+                    <textarea class="form-control" rows="3" placeholder="Escribe tu comentario " required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar comentario</button>
+            </form>
+            
+            <!-- lista comentarios  -->
+            <div class="comment">
+                <p>
+                    <strong>Juan Pérez</strong><small class="text-muted">- 25 de marzo de 2025</small>
+                    <p>Mu buen producto, llegó muy rápido y en excelentes condiciones.</p>
+                </p>
+                <p>
+                    <strong>Ana Gómez</strong><small class="text-muted">- 24 de marzo de 2025</small>
+                    <p>La calidad es mejor de lo que esperaba. Lo recomiendo totalmente.</p>
+                </p>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

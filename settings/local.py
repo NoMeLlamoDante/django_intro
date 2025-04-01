@@ -1,7 +1,7 @@
-from .base import *
+from settings.base import *
 
+# ALLOWED_HOSTS = ['LOCALHOST']
 INSTALLED_APPS.append('debug_toolbar')
-
 MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 # Database
@@ -20,6 +20,4 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+INTERNAL_IPS = ['127.0.0.1',]

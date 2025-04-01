@@ -1,0 +1,19 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="login d-flex align-items-center justify-content-center">
+    <div class="login__card w-100" style="max-width: 400px;">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+        <form action="{% url 'login' %}" method='post'>
+            {% csrf_token %}
+            {{ form }}
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <a href="{% url 'signup' %}" class="login__link">No tienes un usuario? Registrate aqui</a>
+            </div>
+        </form>
+    </div>
+</div>
+    
+{% endblock content %}
+    
