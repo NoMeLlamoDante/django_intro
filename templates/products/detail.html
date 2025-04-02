@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h2 class="card-title">{{ product.name }}</h2>
+                        <h2 class="card-title">{{ product.name.username }}</h2>
                         <p class="text-muted">SKU:{{ product.sku }}</p>
                         <p class="card-text">{{ product.description }}</p>
                         <h4 class="text-primary">Precio: ${{ product.price }}</h4>
@@ -32,24 +32,25 @@
         <!-- comentarios  -->
         <div class="mb-4">
             <h4>Comentarios</h4>
-            <form class="mb-3">
-                <div class="mb-2">
-                    <textarea class="form-control" rows="3" placeholder="Escribe tu comentario " required></textarea>
-                </div>
+            
+            {% if perms.product.add_comments %}
+            <form class="mb-3" action="{% url 'add_new_comment' product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-2">{{ form.text }}</div>
                 <button type="submit" class="btn btn-primary">Publicar comentario</button>
             </form>
+            {% endif %}
             
             <!-- lista comentarios  -->
+            
+            {% for comment in comments %}
             <div class="comment">
                 <p>
-                    <strong>Juan Pérez</strong><small class="text-muted">- 25 de marzo de 2025</small>
-                    <p>Mu buen producto, llegó muy rápido y en excelentes condiciones.</p>
-                </p>
-                <p>
-                    <strong>Ana Gómez</strong><small class="text-muted">- 24 de marzo de 2025</small>
-                    <p>La calidad es mejor de lo que esperaba. Lo recomiendo totalmente.</p>
+                    <strong>{{ comment.user.username }}</strong><small class="text-muted">- {{ comment.creation_date }}</small>
+                    <p>{{ comment.text }}</p>
                 </p>
             </div>
+            {% endfor %}
         </div>
 
     </div>
